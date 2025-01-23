@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Sofia.unity
+    path: Assets/Main.unity
     guid: b0ad7121693160441a338c9a9d74c1f4
   m_configObjects: {}

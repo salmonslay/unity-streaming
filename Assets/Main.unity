@@ -237,7 +237,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A Cool Video Game
+  m_Text: sofia.kiwi
 --- !u!222 &698655236
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: https://babblarnastreaming.s3.eu-north-1.amazonaws.com/Games/pi4-helpthemuckledown/index.html
+          m_StringArgument: https://babblarnastreaming.s3.eu-north-1.amazonaws.com/Games/swedish/pi4-helpthemuckledown/pi4.html
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1084641486
@@ -582,7 +582,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Swag Svante
+  m_Text: Svante
 --- !u!222 &1118136786
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1046,7 +1046,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: An Old Dude
+  m_Text: Pettson & Findus
 --- !u!222 &1725122864
 CanvasRenderer:
   m_ObjectHideFlags: 0
