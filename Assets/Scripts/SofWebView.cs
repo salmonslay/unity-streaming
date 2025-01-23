@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -7,7 +6,7 @@ public class SofWebView : MonoBehaviour
 {
     private WebViewObject _webViewObject;
 
-    IEnumerator Start()
+    private IEnumerator Start()
     {
         _webViewObject = (new GameObject("_webViewObject")).AddComponent<WebViewObject>();
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
@@ -67,21 +66,20 @@ public class SofWebView : MonoBehaviour
 #endif
                 _webViewObject.EvaluateJS(js + @"Unity.call('ua=' + navigator.userAgent)");
             },
-            transparent: true
-            //zoom: true,
+            transparent: true,
+            zoom: false,
             //ua: "custom user agent string",
-            //radius: 0,  // rounded corner radius in pixel
+            radius: 0,  // rounded corner radius in pixel
             //// android
-            //androidForceDarkMode: 0,  // 0: follow system setting, 1: force dark off, 2: force dark on
+            androidForceDarkMode: 0,  // 0: follow system setting, 1: force dark off, 2: force dark on
             //// ios
-            //enableWKWebView: true,
-            //wkContentMode: 0,  // 0: recommended, 1: mobile, 2: desktop
+            enableWKWebView: true,
+            wkContentMode: 0  // 0: recommended, 1: mobile, 2: desktop
             //wkAllowsLinkPreview: true,
             //// editor
             //separated: false
         );
 
-        // cf. https://github.com/gree/unity-webview/issues/1094#issuecomment-2358718029
         while (!_webViewObject.IsInitialized())
         {
             yield return null;
@@ -91,27 +89,12 @@ public class SofWebView : MonoBehaviour
         _webViewObject.bitmapRefreshCycle = 1;
         _webViewObject.devicePixelRatio = 1;  // 1 or 2
 #endif
-        // cf. https://github.com/gree/unity-webview/pull/512
-        // Added alertDialogEnabled flag to enable/disable alert/confirm/prompt dialogs. by KojiNakamaru · Pull Request #512 · gree/unity-webview
-        //_webViewObject.SetAlertDialogEnabled(false);
-
-        // cf. https://github.com/gree/unity-webview/pull/728
-        //_webViewObject.SetCameraAccess(true);
-        //_webViewObject.SetMicrophoneAccess(true);
-
-        // cf. https://github.com/gree/unity-webview/pull/550
-        // introduced SetURLPattern(..., hookPattern). by KojiNakamaru · Pull Request #550 · gree/unity-webview
-        //_webViewObject.SetURLPattern("", "^https://.*youtube.com", "^https://.*google.com");
-
-        // cf. https://github.com/gree/unity-webview/pull/570
-        // Add BASIC authentication feature (Android and iOS with WKWebView only) by takeh1k0 · Pull Request #570 · gree/unity-webview
-        //_webViewObject.SetBasicAuthInfo("id", "password");
-
-        //_webViewObject.SetScrollbarsVisibility(true);
+        
+        _webViewObject.SetScrollbarsVisibility(false);
 
         _webViewObject.SetMargins(0, 0, 0, 0);
         _webViewObject.SetTextZoom(100); // android only. cf. https://stackoverflow.com/questions/21647641/android-webview-set-font-size-system-default/47017410#47017410
-        //_webViewObject.SetMixedContentMode(2);  // android only. 0: MIXED_CONTENT_ALWAYS_ALLOW, 1: MIXED_CONTENT_NEVER_ALLOW, 2: MIXED_CONTENT_COMPATIBILITY_MODE
+        _webViewObject.SetMixedContentMode(2);  // android only. 0: MIXED_CONTENT_ALWAYS_ALLOW, 1: MIXED_CONTENT_NEVER_ALLOW, 2: MIXED_CONTENT_COMPATIBILITY_MODE
         _webViewObject.SetVisibility(false);
 
         yield break;
@@ -138,8 +121,7 @@ public class SofWebView : MonoBehaviour
 
     private IEnumerator LoadURL(string Url)
     {
-#if !UNITY_WEBPLAYER && !UNITY_WEBGL
-        if (Url.StartsWith("http"))
+        if (Url.StartsWith("http")) // (including https)
         {
             _webViewObject.LoadURL(Url.Replace(" ", "%20"));
         }
@@ -184,12 +166,5 @@ public class SofWebView : MonoBehaviour
                 }
             }
         }
-#else
-        if (Url.StartsWith("http")) {
-            _webViewObject.LoadURL(Url.Replace(" ", "%20"));
-        } else {
-            _webViewObject.LoadURL("StreamingAssets/" + Url.Replace(" ", "%20"));
-        }
-#endif
     }
 }
