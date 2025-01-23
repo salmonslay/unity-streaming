@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 568469717}
   - component: {fileID: 568469718}
   m_Layer: 0
-  m_Name: SampleWebView
+  m_Name: WebView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 928657149}
   - component: {fileID: 928657148}
   m_Layer: 5
-  m_Name: Button (Legacy) (2)
+  m_Name: Button3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 1084641486}
   - component: {fileID: 1084641485}
   m_Layer: 5
-  m_Name: Button (Legacy) (1)
+  m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 1332700212}
   - component: {fileID: 1332700211}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
